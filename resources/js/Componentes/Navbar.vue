@@ -18,6 +18,7 @@
     </div>
 </template>
 <script>
+import axios from "axios";
 export default {
     data() {
         return {
@@ -27,6 +28,18 @@ export default {
             ],
             drawer: null,
         };
+    },
+    mounted() {
+        this.login();
+    },
+    methods: {
+        async login() {
+            const { data } = await axios.post("/api/login", {
+                email: "email@gmail.com",
+                password: "noquiero",
+            });
+            console.log(data);
+        },
     },
 };
 </script>
